@@ -70,11 +70,13 @@ function execShellCommand(cmd) {
 }
 
 app.get('/hello', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   res.send({ success: true });
   console.log('yep');
 });
 
 app.post('/compute', async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   const graph = JSON.stringify(req.body);
   writeGraphFile(graph);
   const command = 'cd src && java -jar src.jar graph.gr';
@@ -86,6 +88,4 @@ app.post('/compute', async (req, res) => {
   res.send({ success: true, td: t, niceTreeDecomposition: nt });
 });
 
-app.listen(PORT, (error) => {
-  console.log(`Server listening on port ${PORT}`);
-});
+app.listen(PORT);
