@@ -61,13 +61,11 @@ function execShellCommand(cmd) {
 }
 
 app.get('/hello', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
   res.send({ success: true });
   console.log('yep');
 });
 
-app.post('/compute', cors(), async (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
+app.post('/compute', async (req, res) => {
   const graph = JSON.stringify(req.body);
   writeGraphFile(graph);
   const command = 'cd src && java -jar src.jar graph.gr';
