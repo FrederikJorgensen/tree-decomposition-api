@@ -71,6 +71,7 @@ function execShellCommand(cmd) {
 
 app.get('/hello', (req, res) => {
   res.send({ success: true });
+  console.log('yep');
 });
 
 app.post('/compute', async (req, res) => {
