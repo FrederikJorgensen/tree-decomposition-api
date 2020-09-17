@@ -1,14 +1,15 @@
 import express from 'express';
-// import { join } from 'path';
 import bodyParser from 'body-parser';
-// import fileupload from 'express-fileupload';
 import writeGraphFile from './writeGraph.js';
 import {
   createTreeDecomposition,
   createNiceTreeDecomposition,
 } from './writeTreeDecomposition.js';
 import * as childProcess from 'child_process'; // ES6 Syntax
+import cors from 'cors';
 let exec = childProcess.exec;
+
+app.use(cors());
 
 const app = express();
 const PORT = process.env.PORT || 5500;
@@ -75,7 +76,7 @@ app.get('/hello', (req, res) => {
   console.log('yep');
 });
 
-app.post('/compute', async (req, res) => {
+app.post('/compute', cors(), async (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   const graph = JSON.stringify(req.body);
   writeGraphFile(graph);
