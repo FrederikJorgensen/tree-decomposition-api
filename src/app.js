@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 5500;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 function splitString(treeDecompositionString) {
   const textLines = treeDecompositionString.split('\n');
@@ -62,7 +63,6 @@ function execShellCommand(cmd) {
 
 app.get('/hello', (req, res) => {
   res.send({ success: true });
-  console.log('yep');
 });
 
 app.post('/compute', async (req, res) => {
