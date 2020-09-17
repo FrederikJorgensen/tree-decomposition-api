@@ -8,20 +8,10 @@ import {
 import * as childProcess from 'child_process'; // ES6 Syntax
 import cors from 'cors';
 let exec = childProcess.exec;
-
-app.use(cors());
-
 const app = express();
 const PORT = process.env.PORT || 5500;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(fileupload());
-// app.use(express.static(join('public', '../public')));
-// app.set('view engine', 'ejs');
-
-// app.get('/', (_, res) => {
-// res.render('index');
-// });
 
 function splitString(treeDecompositionString) {
   const textLines = treeDecompositionString.split('\n');
