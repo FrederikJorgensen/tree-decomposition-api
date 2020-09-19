@@ -61,10 +61,6 @@ function execShellCommand(cmd) {
   });
 }
 
-app.get('/hello', (req, res) => {
-  res.send({ success: true });
-});
-
 app.post('/compute', async (req, res) => {
   const graph = JSON.stringify(req.body);
   writeGraphFile(graph);
